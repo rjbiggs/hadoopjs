@@ -1,0 +1,199 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <title>HadoopJS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HadoopJS">
+    <meta name="author" content="Jeremy Annis">
+
+    <!-- Bootstrap -->
+    <link href="css/main.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            padding-top: 10%;
+            padding-bottom: 40px;
+        }
+    </style>
+
+</head>
+
+<body style="background: transparent">
+
+<!-- Main Navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top" style="opacity : .90">
+        <div class="navbar-inner">
+        <a class="brand" href="#"><!--<img src="images/home.png" height='32' width='32'></img> -->HadoopJS</a>
+            <ul class="nav">
+                    <ul class="nav">
+                    <li class="divider-vertical"></li>
+                    <li><a href="#analytics">Analytics</a></li>
+                    <li><a href="#sources">Data Sets</a></li>
+                    <li><a href="#scripts">Reference Data</a></li>
+                    <li><a href="#jobs">My Jobs</a></li>
+                    <li><a href="#results">My Results</a></li>
+                    </ul>
+            </ul>        
+        </div>
+    </div>
+    
+    <div class="container" >
+    
+<!-- Main section for Analytics -->    
+    
+        <div class="row" id='analytics'>
+            <div id="analytics_table" class="span12 well">
+                <form class="form-inline">
+                    <fieldset>
+                        <legend>Analytics</legend>
+                        <br>
+                        <span class="help-block">Prevously defined Analytics are listed below. To create a new Analytic, press the New button. To modify an existing Analytic, select it in the table below and choose Modify. Analytics can be scheduled to run at periodic intervals using the Schedule button. Finally, to run an Analytic immediately, choose one and select Run.</span>
+                        <button id="analytics-schedule_analytic" class="btn"><i class="icon-time"></i> Schedule</button>
+                        <button id="analytics-play_analytic" class="btn"><i class="icon-play"></i> Run</button>
+                        <button id="analytics-edit_analytic" class="btn"><i class="icon-edit"></i> Modify</button>
+                        <button id="analytics-trash_analytic" class="btn"><i class="icon-trash"></i> Delete</button>
+                        <button id="analytics-view_analytic" class="btn"><i class="icon-file"></i> View Source</button>
+                        <button id="analytics-new_analytic" class="btn btn-primary pull-right"><i class="icon-plus"></i> New Analytic</a>
+                    </fieldset>
+                </form>
+
+                <table class="table table-striped table-bordered table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Owner</th>
+                            <th>Data Sets</th>
+                            <th>Classification</th>
+                        </tr>
+                        <tbody id="analytics_table_body">
+                        </tbody>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        
+<!-- Main section for Datasets -->        
+        
+        <div class="row" id='datasets'>
+            <div id="datasets_table" class="span12 well">
+                <form class="form-inline">
+                    <fieldset>
+                        <legend>Data Sets</legend>
+                        <br>
+                        <span class="help-block">Available public Data Sets are listed here. These Data Sets can be used as input to Analytics. It is possible to configure a specific date range for an Analytic or to choose to process the complete date range.</span>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        
+<!-- Main section for Reference data -->        
+        
+        <div class="row" id='reference'>
+            <div id="reference_table" class="span12 well">
+                <form class="form-inline">
+                    <fieldset>
+                        <legend>Reference Data</legend>
+                        <br>
+                        <span class="help-block">Reference Data Sets are available to an Analytic as it is running.</span>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        
+<!-- Main section for Jobs -->        
+
+        <div class="row" id='jobs'>
+            <div id="jobs_table" class="span12 well">
+                <form class="form-inline">
+                    <fieldset>
+                        <legend>Jobs</legend>
+                        <br>
+                        <span class="help-block">When an Analytic is executed, it is called a Job. All your Jobs are listed here. This includes historical Jobs as well as Jobs that are currently running.</span>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        
+
+<!-- Main section for Results -->        
+
+        <div class="row" id='results'>
+            <div id="results_table" class="span12 well">
+                <form class="form-inline">
+                    <fieldset>
+                        <legend>Results</legend>
+                        <br>
+                        <span class="help-block">Results from running your Analytics are available here. The raw result set can viewed in the browser or downloaded directly to your desktop. Alternatively, a result set can be visualised using a custom D3 visualisation directly in the browser.</span>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+
+
+<!-- Modals -->
+
+<!-- New Analytic -->
+    <div id="modal-new_analytic" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3>Create New Analytic</h3>
+            </div>
+            <div class="modal-body">
+
+                <form>
+                    <fieldset>
+                        <label>Analytic name</label>
+                        <input type="text" placeholder="Name" id="modal-new_analytic_name">
+                        <label>Description</label>
+                        <input type="text" placeholder="Description" class="input-xlarge" id="modal-new_analytic_description">
+                        <label>Classification</label>
+                        <input type="text" placeholder="Classification" class="input-xlarge" id="modal-new_analytic_classification">    
+                        <label>Input data sets required</label>
+                        <select  multiple="multiple" class="input-xlarge" id="modal-new_analytic-dataset_selection">
+                        </select>
+                    </fieldset>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                <button class="btn btn-primary" id="modal-new_analytic-save">Save changes</button>
+            </div>
+        </div>
+    </div>
+
+
+<!-- for the editor
+
+<div id="editor" style="position:relative; height: 300px; ">
+function foo(items) {
+var x = "All this is syntax highlighted";
+return x;
+}
+</div>
+
+-->
+
+<!-- Scripts -->
+    
+    <!-- scripts here, faster loading of overall site if at the end -->
+    <script src="lib/jquery-1.8.1.js"></script>
+    <script src="lib/ace/ace.js"></script>
+    <script src="lib/d3.v2.js"></script>
+    <script src="lib/underscore.js"></script>
+    <script src="lib/backbone.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- user scripts -->
+    <script src="scripts/analytics.js"></script>
+    <script src="scripts/datasets.js"></script>
+    <script src="scripts/newanalyticform.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/dummy_data.js"></script>
+</body>
+</html>
