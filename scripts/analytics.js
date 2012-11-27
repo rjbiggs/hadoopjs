@@ -112,22 +112,27 @@ var AnalyticLibraryTable = Backbone.View.extend({
     
     // schedule button pressed
     scheduleAnalytic : function(e) {
+        e.preventDefault();
     },
     
     // edit analytic
     editAnalytic : function(e) {
+        e.preventDefault();
     },
     
     // view analytic
     viewAnalytic : function(e) {
+        e.preventDefault();
     },
     
     // trash
     trashAnalytic : function(e) {
+        e.preventDefault();
     },
     
     // play
     playAnalytic : function(e) {
+        e.preventDefault();
     }
 });
 
