@@ -27,14 +27,12 @@
         <div class="navbar-inner">
         <a class="brand" href="#"><!--<img src="images/home.png" height='32' width='32'></img> -->HadoopJS</a>
             <ul class="nav">
-                    <ul class="nav">
-                    <li class="divider-vertical"></li>
-                    <li><a href="#analytics">Analytics</a></li>
-                    <li><a href="#sources">Data Sets</a></li>
-                    <li><a href="#scripts">Reference Data</a></li>
-                    <li><a href="#jobs">My Jobs</a></li>
-                    <li><a href="#results">My Results</a></li>
-                    </ul>
+                <li class="divider-vertical"></li>
+                <li><a href="#analytics">Analytics</a></li>
+                <li><a href="#datasets">Data Sets</a></li>
+                <li><a href="#reference">Reference Data</a></li>
+                <li><a href="#jobs">My Jobs</a></li>
+                <li><a href="#results">My Results</a></li>
             </ul>        
         </div>
     </div>
@@ -55,7 +53,7 @@
                         <button id="analytics-edit_analytic" class="btn"><i class="icon-edit"></i> Modify</button>
                         <button id="analytics-trash_analytic" class="btn"><i class="icon-trash"></i> Delete</button>
                         <button id="analytics-view_analytic" class="btn"><i class="icon-file"></i> View Source</button>
-                        <button id="analytics-new_analytic" class="btn btn-primary pull-right"><i class="icon-plus"></i> New Analytic</a>
+                        <button id="analytics-new_analytic" class="btn btn-primary pull-right"><i class="icon-plus"></i> New Analytic</button>
                     </fieldset>
                 </form>
 
@@ -69,9 +67,9 @@
                             <th>Data Sets</th>
                             <th>Classification</th>
                         </tr>
-                        <tbody id="analytics_table_body">
-                        </tbody>
                     </thead>
+                    <tbody id="analytics_table_body">
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -143,31 +141,27 @@
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <h3>Create New Analytic</h3>
-            </div>
-            <div class="modal-body">
-
-                <form>
-                    <fieldset>
-                        <label>Analytic name</label>
-                        <input type="text" placeholder="Name" id="modal-new_analytic_name">
-                        <label>Description</label>
-                        <input type="text" placeholder="Description" class="input-xlarge" id="modal-new_analytic_description">
-                        <label>Classification</label>
-                        <input type="text" placeholder="Classification" class="input-xlarge" id="modal-new_analytic_classification">    
-                        <label>Input data sets required</label>
-                        <select  multiple="multiple" class="input-xlarge" id="modal-new_analytic-dataset_selection">
-                        </select>
-                    </fieldset>
-                </form>
-
-            </div>
-            <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                <button class="btn btn-primary" id="modal-new_analytic-save">Save changes</button>
-            </div>
+        </div>
+        <div class="modal-body">
+            <form>
+                <fieldset>
+                     <label>Analytic name</label>
+                     <input type="text" placeholder="Name" id="modal-new_analytic_name">
+                     <label>Description</label>
+                     <input type="text" placeholder="Description" class="input-xlarge" id="modal-new_analytic_description">
+                     <label>Classification</label>
+                     <input type="text" placeholder="Classification" class="input-xlarge" id="modal-new_analytic_classification">    
+                     <label>Input data sets required</label>
+                     <select  multiple="multiple" class="input-xlarge" id="modal-new_analytic-dataset_selection">
+                     </select>
+                </fieldset>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            <button class="btn btn-primary" id="modal-new_analytic-save">Save changes</button>
         </div>
     </div>
-
 
 <!-- for the editor
 
