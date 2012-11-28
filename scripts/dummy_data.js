@@ -1,5 +1,5 @@
 
-<!-- Analytic library test data -->
+// <!-- Analytic library test data -->
 
 
 
@@ -52,7 +52,7 @@ HadoopJS.analyticLibrary.add(dnsCount);
 
 
 
-<!-- Our Dataset test data -->
+// <!-- Our Dataset test data -->
 
 var ds1 = new Dataset({
     _id : "1",
